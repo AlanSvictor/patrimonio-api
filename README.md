@@ -1,4 +1,5 @@
-# Controle de Patrimôni api
+[![Build Status](https://travis-ci.org/AlanSvictor/patrimonio-api.svg?branch=master)](https://travis-ci.org/AlanSvictor/patrimonio-api)
+# Controle de Patrimônio api
 
 Essa ferramenta visa controlar o cadastro de patrimônios
 
