@@ -66,7 +66,7 @@ public class PatrimonioController {
 		log.info("Buscando patrimonio por id: {}", id);
 		
 		Optional<Patrimonio> patrimonio = this.patrimonioService.buscarPorId(id);
-		if (patrimonio.isPresent()) {
+		if (!patrimonio.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado patrimônio para o id: " + id);
 		}
 		return ResponseEntity.ok(PatrimonioDto.buildDto(patrimonio.get()));	
@@ -93,7 +93,7 @@ public class PatrimonioController {
 		}
 		
 		Optional<Marca> marca = this.marcaService.buscarPorId(patrimonioDto.getMarcaId());
-		if (marca.isPresent()) {
+		if (!marca.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado marca cadastrada para o id: " + patrimonioDto.getMarcaId());
 		}
 		patrimonioDto.setMarca(marca.get());

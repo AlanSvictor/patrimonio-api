@@ -48,9 +48,9 @@ public class UsuarioController {
 		log.info("Buscando todas os usuarios");
 		
 		Page<Usuario> usuarios = this.usuarioService.bucarTodos(PageRequest.of(pag, this.qtdPorPagina));
-		Page<UsuarioDto> usuarioDto = usuarios.map(usuario -> UsuarioDto.buildDto(usuario));
+		Page<UsuarioDto> usuarioDto = usuarios.map(UsuarioDto::buildDto);
 
-		if (usuarioDto.isEmpty()) {			
+		if (usuarioDto.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}		
 		return ResponseEntity.ok(usuarioDto);		
@@ -61,7 +61,7 @@ public class UsuarioController {
 		log.info("Buscando usuario por id: {}", id);
 		
 		Optional<Usuario> usuario = this.usuarioService.buscaPorId(id);
-		if (usuario.isPresent()) {
+		if (!usuario.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado usuário para o id: " + id);
 		}
 		return ResponseEntity.ok(UsuarioDto.buildDto(usuario.get()));	
