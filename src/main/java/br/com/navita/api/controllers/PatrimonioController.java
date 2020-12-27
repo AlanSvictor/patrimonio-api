@@ -45,7 +45,6 @@ public class PatrimonioController {
 	@Value("${paginacao.qtd_por_pagina}")
 	private int qtdPorPagina;
 	
-	
 	public PatrimonioController() {
 	}
 
@@ -67,7 +66,7 @@ public class PatrimonioController {
 		log.info("Buscando patrimonio por id: {}", id);
 		
 		Optional<Patrimonio> patrimonio = this.patrimonioService.buscarPorId(id);
-		if (patrimonio.isEmpty()) {			
+		if (patrimonio.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado patrimônio para o id: " + id);
 		}
 		return ResponseEntity.ok(PatrimonioDto.buildDto(patrimonio.get()));	
@@ -78,7 +77,7 @@ public class PatrimonioController {
 		log.info("Persistindo patrimonio:", patrimonioDto.toString());
 
 		Optional<Marca> marca = this.marcaService.buscarPorId(patrimonioDto.getMarcaId());
-		if (marca.isEmpty()) {			
+		if (!marca.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado marca cadastrada para o id: " + patrimonioDto.getMarcaId());
 		}
 		patrimonioDto.setMarca(marca.get());
@@ -94,7 +93,7 @@ public class PatrimonioController {
 		}
 		
 		Optional<Marca> marca = this.marcaService.buscarPorId(patrimonioDto.getMarcaId());
-		if (marca.isEmpty()) {			
+		if (marca.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado marca cadastrada para o id: " + patrimonioDto.getMarcaId());
 		}
 		patrimonioDto.setMarca(marca.get());

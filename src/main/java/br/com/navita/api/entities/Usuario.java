@@ -82,7 +82,7 @@ public class Usuario {
      
     @PrePersist
     public void prePersist() {
-        final var atual = LocalDateTime.now();
+        final LocalDateTime atual = LocalDateTime.now();
         dataCriacao = atual;
         dataAtualizacao = atual;
     }

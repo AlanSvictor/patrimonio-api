@@ -93,7 +93,7 @@ public class Patrimonio {
      
     @PrePersist
     public void prePersist() {
-        final var atual = LocalDateTime.now();
+        final LocalDateTime atual = LocalDateTime.now();
         dataCriacao = atual;
         dataAtualizacao = atual;
         tombo = new Random().nextInt(11) + 1L; 

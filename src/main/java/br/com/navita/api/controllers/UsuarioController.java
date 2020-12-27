@@ -61,7 +61,7 @@ public class UsuarioController {
 		log.info("Buscando usuario por id: {}", id);
 		
 		Optional<Usuario> usuario = this.usuarioService.buscaPorId(id);
-		if (usuario.isEmpty()) {			
+		if (usuario.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado usuário para o id: " + id);
 		}
 		return ResponseEntity.ok(UsuarioDto.buildDto(usuario.get()));	
