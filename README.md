@@ -13,3 +13,5 @@ Os testes não utiliza, arquivos de xml ou .sql para popular os dados, facilitan
 Neste projeto é utilizado o banco de dados H2 (Armazenamento em memória) para testes e PostgreSQL para ambiente dev.
 
 Foi adicionado arquivo Docker-compose para facilizar o uso se necessário.
+
+Enpoints adicionados em : http://localhost:8080/swagger-ui.html

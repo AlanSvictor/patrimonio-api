@@ -85,7 +85,7 @@ public class MarcaController {
 	
 	@PostMapping
 	public ResponseEntity<?> post(@Valid @RequestBody MarcaDto marcaDto) {
-		log.info("Persistindo marca:", marcaDto.toString());
+		log.info("Persistindo marca: {}", marcaDto.toString());
 		
 		Optional<Marca> marca = marcaService.buscarPorNome(marcaDto.getNome());
 		if (marca.isPresent()) {			
